@@ -8,15 +8,16 @@ function handleFormSubmit(event)
     };
     axios
       .post(
-        "https://crudcrud.com/api/962ae7dbb8304f338218e083000426a2/appointmentData",
+        "https://crudcrud.com/api/7aee62667ec84bcd9245fc72ab3950b7/tabledata",
         TableDetails
       )
       .then((response) => displayUserOnScreen(response.data))
       .catch((error) => console.log(error));
   
   } 
+
   window.addEventListener('DOMContentLoaded',()=>{
-    axios.get("https://crudcrud.com/api/962ae7dbb8304f338218e083000426a2/appointmentData")
+    axios.get("https://crudcrud.com/api/7aee62667ec84bcd9245fc72ab3950b7/tabledata")
     .then((response) =>{
         for(let i=0; i<response.data.length; i++)
         {
@@ -25,6 +26,7 @@ function handleFormSubmit(event)
     } )
       .catch((error) => console.log(error));
   })
+
   function displayUserOnScreen(TableDetails) {
     // Clearing the input fields
     document.getElementById("price").value = "";
@@ -50,7 +52,7 @@ function handleFormSubmit(event)
     userList.appendChild(userItem);
   
     deleteBtn.addEventListener("click", function (event) {
-        axios.delete(`https://crudcrud.com/api/962ae7dbb8304f338218e083000426a2/appointmentData/${TableDetails._id}`)
+        axios.delete(`https://crudcrud.com/api/7aee62667ec84bcd9245fc72ab3950b7/tabledata/${TableDetails._id}`)
         .then((response) => console.log(response.data))
          .catch((error) => console.log(error));
          userList.removeChild(event.target.parentElement);
@@ -61,7 +63,7 @@ function handleFormSubmit(event)
       document.getElementById("price").value = TableDetails.price;
       document.getElementById("dish").value = TableDetails.dish;
       document.getElementById("table").value = TableDetails.table;
-      axios.delete(`https://crudcrud.com/api/962ae7dbb8304f338218e083000426a2/appointmentData/${TableDetails._id}`)
+      axios.delete(`https://crudcrud.com/api/7aee62667ec84bcd9245fc72ab3950b7/tabledata/${TableDetails._id}`)
         .then((response) => console.log(response.data))
          .catch((error) => console.log(error));
     });
